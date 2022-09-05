@@ -1,0 +1,28 @@
+:root {
+    --primary-color: #115e59;
+    --seconday-color: #ccfbf1;
+}
+
+body {
+    text-align: center;
+    background-color: var(--primary-color);
+}
+
+h1 {
+    font-size: xx-large;
+    margin-top: 30vh;
+    color: var(--seconday-color);
+}
+
+input, button{
+    font-size: x-large;
+    border-radius: 0.5rem;
+    border-color: var(--seconday-color);
+}
+
+p {
+    margin-top: 2rem;
+    font-size: x-large;
+    margin-top: 1rem;
+    color: var(--seconday-color);
+}
