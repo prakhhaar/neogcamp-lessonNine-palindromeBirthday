@@ -1,7 +1,9 @@
+// Reversing the order of the date
 function reverseString(str) {
   return str.split("").reverse().join("");
 }
 
+// Comparing reversed date to actual date
 function isPalindrome(str) {
   var reversedString = reverseString(str);
 
@@ -11,6 +13,7 @@ function isPalindrome(str) {
   return false;
 }
 
+// Adding '0' to single digit value in date
 function convertDateToStr(date) {
   var dateStr = { day: "", month: "", year: "" };
 
@@ -35,6 +38,7 @@ function convertDateToStr(date) {
   return dateStr;
 }
 
+// Getting all formats of date
 function getAllDateFormats(date) {
   var dateStr = convertDateToStr(date);
 
@@ -48,6 +52,7 @@ function getAllDateFormats(date) {
   return [ddmmyyyy, mmddyyyy, yyyymmdd, ddmmyy, mmddyy, yymmdd];
 }
 
+// Checking if any format of date forms a palindrome date
 function checkPalindromeForAllDateFormats(date) {
   var listOfPalindromes = getAllDateFormats(date);
 
@@ -63,6 +68,7 @@ function checkPalindromeForAllDateFormats(date) {
   return flag;
 }
 
+// Check for leap year
 function isLeapYear(year) {
   if (year % 400 === 0) {
     return true;
@@ -76,6 +82,7 @@ function isLeapYear(year) {
   return false;
 }
 
+// Moving to next date
 function getNextDate(date) {
   var day = date.day + 1;
   var month = date.month;
@@ -83,6 +90,7 @@ function getNextDate(date) {
 
   var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
+  // Check for leap year
   if (month === 2) {
     if (isLeapYear(year)) {
       if (day > 29) {
@@ -90,7 +98,7 @@ function getNextDate(date) {
         month++;
       }
     } else {
-      if (day > 28) {
+      if (day > 28) { 
         day = 1;
         month++;
       }
@@ -114,6 +122,7 @@ function getNextDate(date) {
   };
 }
 
+// Moving to previous date
 function getPreviousDate(date) {
   var day = date.day - 1;
   var month = date.month;
@@ -155,6 +164,7 @@ function getPreviousDate(date) {
   };
 }
 
+// Checking if the next date is palindrome
 function getNextPalindromeDate(date) {
   var counter = 0;
   var nextDate = getNextDate(date);
@@ -171,6 +181,7 @@ function getNextPalindromeDate(date) {
   return [counter, nextDate];
 }
 
+// Checking if the previous date is palindrome
 function getPreviousPalindromeDate(date) {
   var counter = 0;
   var previousDate = getPreviousDate(date);
@@ -194,16 +205,20 @@ var result = document.querySelector("#result");
 function clickHandler(e) {
   var bdayStr = dateInput.value;
 
+  // Checking if birthday string is not empty
   if (bdayStr != "") {
     var listOfDate = bdayStr.split("-");
+    //Storing the values of date into an object
     var date = {
       day: Number(listOfDate[2]),
       month: Number(listOfDate[1]),
       year: Number(listOfDate[0]),
     };
 
+    // Function call for checking if the birthdate is a palindrome date
     var isPalindrome = checkPalindromeForAllDateFormats(date);
 
+    // Printing results to UI
     if (isPalindrome) {
       result.innerText = "Yay! your birthday is a palindrome.";
     } else {
